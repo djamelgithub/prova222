@@ -11,9 +11,11 @@ export const PROFILE_TYPES = {
     UNFOLLOW: 'UNFOLLOW',
     GET_ID: 'GET_PROFILE_ID',
     GET_POSTS: 'GET_PROFILE_POSTS',
-    UPDATE_POST: 'UPDATE_PROFILE_POST'
+    UPDATE_POST: 'UPDATE_PROFILE_POST',
+    SAVE_COUNTER_SUCCESS: 'SAVE_COUNTER_SUCCESS',
+    SAVE_COUNTER_ERROR :'SAVE_COUNTER_ERROR '
 }
-
+ 
 
 export const getProfileUsers = ({id, auth}) => async (dispatch) => {
     dispatch({type: PROFILE_TYPES.GET_ID, payload: id})
@@ -48,12 +50,10 @@ export const getProfileUsers = ({id, auth}) => async (dispatch) => {
 
 
 export const updateProfileUser = ({userData, avatar, auth}) => async (dispatch) => {
-    if(!userData.fullname)
-    return dispatch({type: GLOBALTYPES.ALERT, payload: {error: "Please add your full name."}})
+    if(!userData.username)
+    return dispatch({type: GLOBALTYPES.ALERT, payload: {error: "Please add your user name."}})
 
-    if(userData.fullname.length > 25)
-    return dispatch({type: GLOBALTYPES.ALERT, payload: {error: "Your full name too long."}})
-
+   
     if(userData.story.length > 200)
     return dispatch({type: GLOBALTYPES.ALERT, payload: {error: "Your story too long."}})
 
@@ -183,3 +183,30 @@ export const unfollow = ({users, user, auth, socket}) => async (dispatch) => {
         })
     }
 }
+
+// Acción de éxito al guardar el contador
+export const saveCounterSuccess = () => async (dispatch) => {
+    try {
+      // Aquí podrías realizar cualquier lógica adicional necesaria
+      // antes de despachar la acción de éxito, si es necesario.
+  
+      // Despachar la acción de éxito
+      dispatch({ type: PROFILE_TYPES.SAVE_COUNTER_SUCCESS });
+    } catch (error) {
+      console.error('Error in saveCounterSuccess action:', error);
+    }
+  };
+  
+  // Acción de error al guardar el contador
+  export const saveCounterError = (errorMessage) => async (dispatch) => {
+    try {
+      // Aquí podrías realizar cualquier lógica adicional necesaria
+      // antes de despachar la acción de error, si es necesario.
+  
+      // Despachar la acción de error, pasando el mensaje de error como payload
+      dispatch({ type: PROFILE_TYPES.SAVE_COUNTER_ERROR, payload: errorMessage });
+    } catch (error) {
+      console.error('Error in saveCounterError action:', error);
+    }
+  };
+  

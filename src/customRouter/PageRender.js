@@ -13,7 +13,7 @@ const generatePage = (pageName) => {
     }
 }
 
-const PageRender = () => {
+ const PageRender = () => {     
     const {page, id} = useParams()
     const { auth } = useSelector(state => state)
 
@@ -23,7 +23,8 @@ const PageRender = () => {
         if(id){
             pageName = `${page}/[id]`
         }else{
-            pageName = `${page}`
+           // pageName = `${page}`
+           pageName = `${page}/[id]`
         }
     }
 

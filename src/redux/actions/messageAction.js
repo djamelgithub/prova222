@@ -1,6 +1,6 @@
 import { GLOBALTYPES, DeleteData } from '../actions/globalTypes'
 import { postDataAPI, getDataAPI, deleteDataAPI } from '../../utils/fetchData'
-
+ 
 export const MESS_TYPES = {
     ADD_USER: 'ADD_USER',
     ADD_MESSAGE: 'ADD_MESSAGE',
@@ -11,14 +11,45 @@ export const MESS_TYPES = {
     DELETE_CONVERSATION: 'DELETE_CONVERSATION',
     CHECK_ONLINE_OFFLINE: 'CHECK_ONLINE_OFFLINE'
 }
+// actions/messageAction.js
+/*export const addMessage = ({ msg, auth, socket }) => async (dispatch) => {
+    dispatch({ type: MESS_TYPES.ADD_MESSAGE, payload: msg });
+
+    const { _id, avatar, username } = auth.user;
+    socket.emit('addMessage', { ...msg, user: { _id, avatar, username } });
+
+    try {
+        // Enviar el mensaje al servidor
+        await postDataAPI('message', msg, auth.token);
+
+        // Verificar si el mensaje es para el usuario actual
+        if (msg.recipient === auth.user._id) {
+            // Crear una notificación para el usuario actual
+            const notificationMsg = {
+                id: auth.user._id,
+                text: 'Vous avez reçu un nouveau message privé.',
+                recipients: [msg.sender],
+                url: `/message/${msg.sender}`,
+            };
+
+            // Enviar la notificación al servidor para su distribución
+            socket.emit('createNotification', notificationMsg);
+        }
+
+        
+        dispatch(createNotify({ msg, auth, socket }))
+    } catch (err) {
+        dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg } });
+    }
+}; */
 
 
-
+ 
 export const addMessage = ({msg, auth, socket}) => async (dispatch) =>{
     dispatch({type: MESS_TYPES.ADD_MESSAGE, payload: msg})
 
-    const { _id, avatar, fullname, username } = auth.user
-    socket.emit('addMessage', {...msg, user: { _id, avatar, fullname, username } })
+    const { _id, avatar,   username } = auth.user
+    socket.emit('addMessage', {...msg, user: { _id, avatar, username } })
     
     try {
         await postDataAPI('message', msg, auth.token)
@@ -26,7 +57,7 @@ export const addMessage = ({msg, auth, socket}) => async (dispatch) =>{
         dispatch({type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}})
     }
 }
-
+ 
 export const getConversations = ({auth, page = 1}) => async (dispatch) => {
     try {
         const res = await getDataAPI(`conversations?limit=${page * 9}`, auth.token)

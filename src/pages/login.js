@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
- import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
- 
-import { GoogleLogin } from 'react-google-login';
-import FacebookLogin from 'react-facebook-login'
+import { login } from '../redux/actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,11 +16,9 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { login } from '../redux/actions/authAction';
- 
+
 const Login = () => {
-    const initialState = { email: '', password: '', showPassword: false,   err: '',
-    success: ''};
+    const initialState = { email: '', password: '', showPassword: false };
     const [userData, setUserData] = useState(initialState);
     const { email, password, showPassword } = userData;
 
@@ -38,7 +32,7 @@ const Login = () => {
 
     const handleChangeInput = e => {
         const { name, value } = e.target;
-        setUserData({ ...userData, [name]: value , err: '', success: ''});
+        setUserData({ ...userData, [name]: value });
     };
 
     const handleClickShowPassword = () => {
@@ -48,51 +42,12 @@ const Login = () => {
     const handleMouseDownPassword = e => {
         e.preventDefault();
     };
-    const handleSubmit = async e => {
-         
-        try {
-     e.preventDefault();
+
+    const handleSubmit = e => {
+        e.preventDefault();
         dispatch(login(userData));
-        setUserData({...userData, err: '' })
-            
- 
+    };
 
-        } catch (err) {
-            err.response.data.msg && 
-            setUserData({...userData, err: err.response.data.msg, success: ''})
-        }
-    }
-  
-    const responseGoogle = async (response) => {
-        try {
-            const res = await axios.post('/api/google_login', {tokenId: response.tokenId})
-
-            setUserData({...userData, error:'', success: res.data.msg})
-            localStorage.setItem('firstLogin', true)
-
-            dispatch(login())
-            history.push('/')
-        } catch (err) {
-            err.response.data.msg && 
-            setUserData({...userData, err: err.response.data.msg, success: ''})
-        }
-    }
-
-    const responseFacebook = async (response) => {
-        try {
-            const {accessToken, userID} = response
-            const res = await axios.post('/api/facebook_login', {accessToken, userID})
-
-            setUserData({...userData, error:'', success: res.data.msg})
-            localStorage.setItem('firstLogin', true)
-
-            dispatch(login())
-            history.push('/')
-        } catch (err) {
-            err.response.data.msg && 
-            setUserData({...userData, err: err.response.data.msg, success: ''})
-        }
-    }
     return (
         <ThemeProvider theme={createTheme()}>
             <Grid container component="main" sx={{ height: '100vh' }}>
@@ -127,24 +82,6 @@ const Login = () => {
                         <Typography component="h1" variant="h5">
                             Connexion
                         </Typography>
-
-                        <Grid container justifyContent="space-between">
-                            <GoogleLogin
-                                clientId="810070450306-rjqvpfiice6cltmhs04j0966fbd7v8b7.apps.googleusercontent.com"
-                                buttonText="Login avaic google"
-                                onSuccess={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            />
-
-                            <FacebookLogin
-                                appId="Your facebook app id"
-                                autoLoad={false}
-                                fields="name,email,picture"
-                                callback={responseFacebook}
-                            />
- </Grid>
-
-
                         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"

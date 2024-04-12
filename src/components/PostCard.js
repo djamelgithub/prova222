@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
- 
+import { useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import Comments from "./homePost/Comments";
 import CardBody from "./homePost/post_card/CardBody";
@@ -14,7 +14,7 @@ import CardHeader from './homePost/post_card/CardHeader';
 //import Cardtitlesala from './homePost/post_card/Cardtitlesala'; <Cardtitlesala post={post} />
 import Informaciondecontacto from "./homePost/post_card/Informaciondecontacto";
 import Cardtitlesala from "./homePost/post_card/Cardtitlesala";
-//import Buttonchat from "./homePost/post_card/Buttonchat"; <Buttonchat  post={post}/>
+import Buttonchat from "./homePost/post_card/Buttonchat";
 
 const PostCard = ({ post, theme }) => {
  
@@ -60,7 +60,7 @@ const PostCard = ({ post, theme }) => {
     <CardHeader post={post} />
     <Cardtitlesala  post={post}  />
     <CardBody post={post} theme={theme} />
-   
+    <Buttonchat  post={post}/>
     {isPostDetailPage && <CardInfosala post={post} />}
     
     {isPostDetailPage && <Cardeventossala post={post} />}

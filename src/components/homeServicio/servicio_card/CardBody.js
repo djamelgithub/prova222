@@ -1,13 +1,13 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import CarouselServicio from '../../Carouselss/CarouselServicio';
- 
+import { IoCarOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'
 
 const CardBody = ({ servicio }) => {
-  const {  languagee } = useSelector(state => state)
- 
+  const { auth, languagee } = useSelector(state => state)
+  const dispatch = useDispatch()
   const { t } = useTranslation();
 
 

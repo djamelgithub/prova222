@@ -8,7 +8,8 @@ import { logout } from '../redux/actions/authAction';
 
  
 import NotifyModal from '../components/NotifyModal';
- let scroll = 0;
+//import Avatar from '../components/Avatar'         <Avatar src={auth.user.avatar} size="medium-avatar" />      </div>
+let scroll = 0;
 const Notificacionesusuario = () => {
     const { auth,notify } = useSelector((state) => state);
     const isAuthenticated = !!auth.token;
@@ -164,11 +165,11 @@ const Notificacionesusuario = () => {
 
 
                                         <li className="sidebar-dropdown">
-                                            <p>
+                                            <a >
                                                 <i className="fa fa-tachometer-alt"></i>
                                                 <span>Annonces</span>
                                                 <span className="badge badge-pill badge-danger">{notify.data.length}</span>
-                                            </p>
+                                            </a>
                                             <div className="sidebar-submenu">
                                                 <ul>
                                                     <li>

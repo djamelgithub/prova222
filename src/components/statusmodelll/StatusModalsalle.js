@@ -548,4 +548,25 @@ const StatusModalsalle = ({ closeModal }) => {
 
 
 export default StatusModalsalle
- 
+
+
+/*
+ <div className="form-group" >
+                        <label className="text-danger">Options d'informations personnelles:</label>
+                        <select onChange={(e) => handleChangeInput(e)} value={postData.informacion} name="informacion" placeholder="Devise" className="form-control" disabled={bloquepost === 'bloque-post'}  >
+                            <option > Options  </option>
+                            <option value="permitirinformacion">Autoriser les informations de contact</option>
+                            <option value="nopermitirinformacion">Ne pas autoriser les informations</option>
+
+                        </select>
+                    </div>
+                    <br></br>
+                    <div className="form-group" >
+                        <label className="text-danger">Options des commentaires:</label>
+                        <select onChange={(e) => handleChangeInput(e)} value={postData.comentarios} name="comentarios" placeholder="Devise" className="form-control" disabled={bloquepost === 'bloque-post'}  >
+                            <option > Options </option>
+                            <option value="permitircomentarios">Activer les commentaires</option>
+
+                            <option value="nopermitircomentarios">Ne pas Activer les commentaires</option>
+
+                        </select>*/

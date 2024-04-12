@@ -39,7 +39,16 @@ const Pagos = () => {
             <button className="btn-primary">Get Started</button>
           </div>
         </div>
-       
+        <footer>
+          <p>
+            Created with <i className="fa fa-heart" /> by 
+            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+            - Read about how I created it
+            <a target="_blank" href="https://www.florin-pop.com/blog/2019/02/how-to-create-pricing-plans/">in this article</a><br />
+            Other projects on
+            <a target="_blank" href="https://github.com/florinpop17/work-journal/">Github</a>
+          </p>
+        </footer>
       </div>
   )
 }

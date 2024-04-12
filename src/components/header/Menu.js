@@ -120,7 +120,7 @@ const Menu = () => {
                                     {theme ? 'Light mode' : 'Dark mode'}
                                 </label>
                                 <div className="dropdown-divider"></div>
-                                <Link className="dropdown-item" to="/login" onClick={() => dispatch(logout())}>
+                                <Link className="dropdown-item" to="/" onClick={() => dispatch(logout())}>
                                     <i className="fas fa-power-off" style={{ color: 'red' }}></i> Se déconnecter
                                 </Link>
                             </div>
@@ -199,7 +199,7 @@ const Menu = () => {
                                     {theme ? 'Light mode' : 'Dark mode'}
                                 </label>
                                 <div className="dropdown-divider"></div>
-                                <Link className="dropdown-item" to="/login" onClick={() => dispatch(logout())}>
+                                <Link className="dropdown-item" to="/" onClick={() => dispatch(logout())}>
                                     <i className="fas fa-power-off" style={{ color: 'red' }}></i> Se déconnecter
                                 </Link>            </div>
                         </li>

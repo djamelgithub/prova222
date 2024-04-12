@@ -1,7 +1,7 @@
  
-import { patchDataAPI,   getDataAPI } from './../../../utils/fetchData'
+import { patchDataAPI,   getDataAPI, postDataAPI } from './../../../utils/fetchData'
 import { GLOBALTYPES } from './../globalTypes'
-
+ 
  
 export const USERS_TYPES = {
   LOADING: 'LOADING_USERS',
@@ -12,7 +12,10 @@ export const USERS_TYPES = {
   UNBLOCK_USER: 'UNBLOCK_USER',
   GET_USER_POSTS: 'GET_USER_POSTS',
   GET_USER_COMMENTS: 'GET_USER_COMMENTS',
-  GET_USER_LIKES: 'GET_USER_LIKES'
+  GET_USER_LIKES: 'GET_USER_LIKES',
+  POSTYAMINA: 'POSTYAMINA',
+  GETYAMINA: 'GETYAMINA'
+
 }
 
 // Acción para obtener los usuarios
@@ -96,4 +99,30 @@ export const editUser = ({ user, userData, token }) => async (dispatch) => {
 };
 
 
- 
+ export const yaminapost = ({userData,token} )=>  async(dispatch)=>{
+dispatch({
+  type:USERS_TYPES.LOADING, payload:true
+});
+const res =await postDataAPI('postyamina',userData,token)
+dispatch({
+type:USERS_TYPES.POSTYAMINA, payload: res.data
+
+})
+dispatch({type:USERS_TYPES.LOADING,payload:false})
+ }
+
+
+
+ export const yaminaget = (user,auth)=>async(dispatch)=>{
+dispatch({
+  type: USERS_TYPES.LOADING, payload:true
+})
+const res = getDataAPI('getyamina',auth.token)
+dispatch({type: USERS_TYPES.GETYAMINA, payload:res.data
+
+})
+dispatch({
+  type:USERS_TYPES.LOADING, payload:false
+})
+
+ }

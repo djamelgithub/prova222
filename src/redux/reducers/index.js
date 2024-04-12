@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import auth from './authReducer'
 import alert from './alertReducer'
- 
+import alert2 from './alert2Reducer'
 import theme from './themeReducer'
 import profile from './profileReducer'
 import status from './statusReducer'
@@ -30,8 +30,11 @@ import peer from './peerReducer'
 import languagee from './languageReducer'
 
 import usersReducer from './usersReducers/usersReducer'
- 
- 
+
+
+
+import bloqueopostReducer from './bloqueoReducer/bloqueopostReducer'
+import bloqueocommentReducer from './bloqueoReducer/bloqueocommentReducer'
 import roleReducer from './rolee/roleeReducer'
 import postaproveReducer from './postaproveReducer'
 import servicioaproveReducer from './servicioaproveReducer'
@@ -46,7 +49,7 @@ import messagesadminReducer from './messagesadminReducer'
 export default combineReducers({
     auth,
     alert,
-     
+    alert2,
     theme,
     profile,
     status,
@@ -70,10 +73,10 @@ export default combineReducers({
     call,
     peer,
     languagee,
-   
-   usersReducer,
+    bloqueocommentReducer,
+    bloqueopostReducer,
     roleReducer,
- 
+    usersReducer,
     postaproveReducer,
     servicioaproveReducer,
     messagesadminReducer

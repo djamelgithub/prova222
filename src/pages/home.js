@@ -305,7 +305,7 @@ const Home = () => {
                                             <div className="sidebar-submenu">
                                                 <ul>
                                                     <li className=" ">
-                                                        <Link className="dropdown-item" to="/#">
+                                                        <Link className="dropdown-item" to="/pages/administracion/administrationmensajes/mensajess">
                                                             <i className="fa fa-envelope  text-info" />
                                                             <span>
                                                                 Messages</span>
@@ -510,8 +510,18 @@ const Home = () => {
                                         <span>Liste Roles</span>
                                     </Link>
                                 </li>
-                               
-                            
+                                <li className="sidebar-dropdown">
+                                    <Link className="dropdown-item" to="/pages/bloqueos/blockposts">
+                                        <i className="fa fa-plus-circle" />
+                                        <span>Block post</span>
+                                    </Link>
+                                </li>
+                                <li className="sidebar-dropdown">
+                                    <Link className="dropdown-item" to="/pages/bloqueos/blockcomments">
+                                        <i className="fa fa-plus-circle" />
+                                        <span>Block comment</span>
+                                    </Link>
+                                </li>
 
                                     <li className="sidebar-dropdown">
                                         <a href="#">
@@ -644,7 +654,7 @@ const Home = () => {
                         </div>
 
                         <div className="sidebar-footer">
-                            <span>hhhhhhhhhhhhh</span>
+                            s<span>hhhhhhhhhhhhh</span>
                         </div>
                     </nav>
 

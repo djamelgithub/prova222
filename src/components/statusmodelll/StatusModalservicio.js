@@ -6,8 +6,8 @@ import { createServicioPendiente } from '../../redux/actions/servicioaproveActio
 import { updateServicio } from '../../redux/actions/servicioAction';
 
 
- import communesjson from "../../json/communes.json";
- 
+import communesjson from "../../json/communes.json";
+
 
 import { imageShow, videoShow } from '../../utils/mediaShow'
 import Slider from 'rc-slider';

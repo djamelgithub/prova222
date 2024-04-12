@@ -1,7 +1,8 @@
 
 import CardHeader from '@mui/material/CardHeader';
 
- 
+import Avatar from '@mui/material/Avatar';
+import Card from '@mui/material/Card';
 
 import moment from 'moment';
 import 'moment/locale/fr';

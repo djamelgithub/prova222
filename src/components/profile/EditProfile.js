@@ -4,12 +4,12 @@ import { checkImage } from '../../utils/imageUpload'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 import { updateProfileUser } from '../../redux/actions/profileAction'
 
-const EditProfile = ({setOnEdit}) => {
+const EditProfile = ({ setOnEdit }) => {
     const initState = {
-        fullname: '', mobile: '', address: '', website: '', story: '', gender: ''
+         mobile: '', address: '', website: '', story: '',
     }
     const [userData, setUserData] = useState(initState)
-    const { fullname, mobile, address, website, story, gender } = userData
+    const {   mobile, address, website, story } = userData
 
     const [avatar, setAvatar] = useState('')
 
@@ -25,8 +25,8 @@ const EditProfile = ({setOnEdit}) => {
         const file = e.target.files[0]
 
         const err = checkImage(file)
-        if(err) return dispatch({
-            type: GLOBALTYPES.ALERT, payload: {error: err}
+        if (err) return dispatch({
+            type: GLOBALTYPES.ALERT, payload: { error: err }
         })
 
         setAvatar(file)
@@ -34,85 +34,67 @@ const EditProfile = ({setOnEdit}) => {
 
     const handleInput = e => {
         const { name, value } = e.target
-        setUserData({ ...userData, [name]:value })
+        setUserData({ ...userData, [name]: value })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
-        dispatch(updateProfileUser({userData, avatar, auth}))
+        dispatch(updateProfileUser({ userData, avatar, auth }))
     }
 
     return (
         <div className="edit_profile">
             <button className="btn btn-danger btn_close"
-            onClick={() => setOnEdit(false)}>
-                Close
+                onClick={() => setOnEdit(false)}>
+                Fermer
             </button>
 
             <form onSubmit={handleSubmit}>
                 <div className="info_avatar">
-                    <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
-                    alt="avatar" style={{filter: theme ? 'invert(1)' : 'invert(0)'}} />
+                    <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
+                        alt="avatar" style={{ filter: theme ? 'invert(1)' : 'invert(0)' }} />
                     <span>
                         <i className="fas fa-camera" />
                         <p>Change</p>
                         <input type="file" name="file" id="file_up"
-                        accept="image/*" onChange={changeAvatar} />
+                            accept="image/*" onChange={changeAvatar} />
                     </span>
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="fullname">Full Name</label>
-                    <div className="position-relative">
-                        <input type="text" className="form-control" id="fullname"
-                        name="fullname" value={fullname} onChange={handleInput} />
-                        <small className="text-danger position-absolute"
-                        style={{top: '50%', right: '5px', transform: 'translateY(-50%)'}}>
-                            {fullname.length}/25
-                        </small>
-                    </div>
-                </div>
+               
 
                 <div className="form-group">
                     <label htmlFor="mobile">Mobile</label>
                     <input type="text" name="mobile" value={mobile}
-                    className="form-control" onChange={handleInput} />
+                        className="form-control" onChange={handleInput} />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="address">Address</label>
+                    <label htmlFor="address">
+                        Adresse</label>
                     <input type="text" name="address" value={address}
-                    className="form-control" onChange={handleInput} />
+                        className="form-control" onChange={handleInput} />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="website">Website</label>
+                    <label htmlFor="website">Site web</label>
                     <input type="text" name="website" value={website}
-                    className="form-control" onChange={handleInput} />
+                        className="form-control" onChange={handleInput} />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="story">Story</label>
+                    <label htmlFor="story">Description</label>
                     <textarea name="story" value={story} cols="30" rows="4"
-                    className="form-control" onChange={handleInput} />
+                        className="form-control" onChange={handleInput} />
 
                     <small className="text-danger d-block text-right">
                         {story.length}/200
                     </small>
                 </div>
 
-                <label htmlFor="gender">Gender</label>
-                <div className="input-group-prepend px-0 mb-4">
-                    <select name="gender" id="gender" value={gender}
-                    className="custom-select text-capitalize"
-                    onChange={handleInput}>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
 
-                <button className="btn btn-info w-100" type="submit">Save</button>
+
+                <button className="btn btn-info w-100" type="submit">Sauvegarder</button>
             </form>
         </div>
     )

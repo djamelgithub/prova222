@@ -30,7 +30,9 @@ const MessageCard = ({ mensaje }) => {
         <div className='row'>
           <div className='col'>
             <div className="d-flex justify-content-between">
-             
+              <a href="#" className="btn btn-primary">Button</a>
+              <a href="#" className="btn btn-primary">Button</a>
+              <a href="#" className="btn btn-primary">Button</a>
             </div>
           </div>
         </div>

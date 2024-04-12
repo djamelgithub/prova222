@@ -1,7 +1,7 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import CarouselPost from '../../Carouselss/CarouselPost';
-//import moment from 'moment';
+import moment from 'moment';
 import 'moment/locale/fr';
 import { useTranslation } from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'

@@ -1,32 +1,26 @@
-const valid = ({fullname, username, email, password, cf_password}) => {
+const valid = ({ username, email, password, cf_password }) => {
     const err = {}
 
-    if(!fullname) {
-        err.fullname = "Please add your full name."
-    }else if(fullname.length > 25){
-        err.fullname = "Full name is up to 25 characters long."
+    if (!username) {
+        err.username = "Veuillez ajouter votre nom d'utilisateur."
+    } else if (username.replace(/ /g, '').length > 25) {
+        err.username = "Le nom d'utilisateur comporte jusqu'à 25 caractères."
     }
 
-    if(!username) {
-        err.username = "Please add your user name."
-    }else if(username.replace(/ /g, '').length > 25){
-        err.username = "User name is up to 25 characters long."
+    if (!email) {
+        err.email = "Veuillez ajouter votre adresse e-mail."
+    } else if (!validateEmail(email)) {
+        err.email = "Le format de l'e-mail est incorrect."
     }
 
-    if(!email) {
-        err.email = "Please add your email."
-    }else if(!validateEmail(email)){
-        err.email = "Email format is incorrect."
+    if (!password) {
+        err.password = "Veuillez ajouter votre mot de passe."
+    } else if (password.length < 6) {
+        err.password = "Le mot de passe doit contenir au moins 6 caractères."
     }
 
-    if(!password) {
-        err.password = "Please add your password."
-    }else if(password.length < 6){
-        err.password = "Password must be at least 6 characters."
-    }
-
-    if(password !== cf_password) {
-        err.cf_password = "Confirm password did not match."
+    if (password !== cf_password) {
+        err.cf_password = "Le mot de passe de confirmation ne correspond pas."
     }
 
     return {

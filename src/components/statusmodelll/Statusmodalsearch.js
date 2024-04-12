@@ -1,5 +1,5 @@
 
-import { Form  } from 'react-bootstrap';
+import { Form, TabContent } from 'react-bootstrap';
 import Wilayacommune from '../searching/Wilayacommune';
 
 
@@ -30,7 +30,9 @@ import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from 'react-select';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
+
 const Statusmodalsearch = ({ closeModal }) => {
 
 

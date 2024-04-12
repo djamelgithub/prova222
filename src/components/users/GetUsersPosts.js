@@ -6,7 +6,11 @@ import { getDataAPI } from '../../utils/fetchData';
 import { USERS_TYPES } from '../../redux/actions/users/usersAction';
 
 import { format } from 'date-fns';
+
+import UserCard from '../UserCard';
  
+
+
 
 const GetUsersPosts = () => {
   const { usersReducer, auth } = useSelector(state => state);

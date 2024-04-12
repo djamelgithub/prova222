@@ -1,7 +1,7 @@
-// messagesadminAction.js
-
+ 
 import { GLOBALTYPES } from '../actions/globalTypes';
-import { postDataAPI, getDataAPI } from '../../utils/fetchData'
+import { postDataAPI, getDataAPI  } from '../../utils/fetchData'
+ 
 
 export const MESSAGEADMIN_TYPE = {
     CREATE_MESSAGES: 'CREATE_MESSAGES',
@@ -9,17 +9,17 @@ export const MESSAGEADMIN_TYPE = {
     DELETE_MESSAGES: 'DELETE_MESSAGES'
 };
 
+ 
 
-
-export const createMessageAdmin = ({ descripcion, email, asunto, auth }) => async (dispatch) => {
-    console.log(descripcion, email, asunto)
+export const createMessageAdmin = ({  descripcion,email,asunto,auth  }) => async (dispatch) => {
+    console.log(descripcion,email,asunto)
     try {
         dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
         // Realizar la solicitud HTTP para crear el mensaje
-        const res = await postDataAPI('mensajes', { descripcion, email, asunto }, auth.token);
-
-         
+        const res = await postDataAPI('mensajes', { descripcion,email,asunto }, auth.token);
+ 
+ 
             // Si la solicitud es exitosa y devuelve datos
             // Despachar la acción para crear el mensaje con los datos recibidos
             dispatch({
@@ -28,10 +28,10 @@ export const createMessageAdmin = ({ descripcion, email, asunto, auth }) => asyn
             });
 
             // Crear la notificación
-
+           
 
             // Despachar la acción para crear la notificación
-
+    
             // Si la respuesta es inesperada o no contiene los datos esperados
             // Despachar una alerta con un mensaje de error
             dispatch({

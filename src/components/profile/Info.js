@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Avatar from '../Avatar'
 import EditProfile from './EditProfile'
-import FollowBtn from '../FollowBtn'
+ 
 import Followers from './Followers'
 import Following from './Following'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
@@ -46,10 +46,10 @@ const Info = ({id, auth, profile, dispatch}) => {
                                     user._id === auth.user._id
                                     ?  <button className="btn btn-outline-info"
                                     onClick={() => setOnEdit(true)}>
-                                        Edit Profile
+                                        Edition Profil
                                     </button>
                                     
-                                    : <FollowBtn user={user} />
+                                    : null
                                 }
                                
                                 
@@ -57,15 +57,14 @@ const Info = ({id, auth, profile, dispatch}) => {
 
                             <div className="follow_btn">
                                 <span className="mr-4" onClick={() => setShowFollowers(true)}>
-                                    {user.followers.length} Followers
+                                    {user.followers.length}Suiveurs
                                 </span>
                                 <span className="ml-4" onClick={() => setShowFollowing(true)}>
-                                    {user.following.length} Following
+                                    {user.following.length} Suivant
                                 </span>
                             </div>
 
-                            <h6>{user.fullname} <span className="text-danger">{user.mobile}</span></h6>
-                            <p className="m-0">{user.address}</p>
+                               <p className="m-0">{user.address}</p>
                             <h6 className="m-0">{user.email}</h6>
                             <a href={user.website} target="_blank" rel="noreferrer">
                                 {user.website}
